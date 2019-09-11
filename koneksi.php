@@ -5,4 +5,4 @@
     $password = "";
     $database = "tokobuku";
 
-    mysqli_connect($server, $user, $password, $database) OR DIE ("koneksi Gagal");
+    $koneksi = mysqli_connect($server, $user, $password, $database) OR DIE ("koneksi Gagal");
