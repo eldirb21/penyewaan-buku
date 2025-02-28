@@ -2,19 +2,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include_once('koneksi.php');
+include_once('../koneksi.php'); 
 
 // Cek koneksi database
 if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
-
-// Cek apakah parameter ID tersedia
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    die("ID tidak valid!");
-}
-
-$id = $_GET['id'];
 
 // Cek apakah semua data dikirim
 if (!empty($_POST['judul']) && !empty($_POST['penyewa']) && !empty($_POST['durasi'])) {
@@ -25,14 +18,8 @@ if (!empty($_POST['judul']) && !empty($_POST['penyewa']) && !empty($_POST['duras
     $tanggal_sewa = date('Y-m-d');
     $tanggal_selesai = date('Y-m-d', strtotime("+$durasi days", strtotime($tanggal_sewa))); // Hitung tanggal selesai
 
-    // Perbaikan Query Update
-    $sql = "UPDATE sewa SET 
-                judul = '$judul', 
-                penyewa = '$penyewa', 
-                durasi = '$durasi',
-                tanggal_sewa = '$tanggal_sewa',
-                tanggal_selesai = '$tanggal_selesai'
-            WHERE id = '$id'";
+    $sql = "INSERT INTO sewa (judul, penyewa, durasi, tanggal_sewa, tanggal_selesai) 
+            VALUES ('$judul', '$penyewa', '$durasi', '$tanggal_sewa', '$tanggal_selesai')";
 
     if (mysqli_query($koneksi, $sql)) {
         header("Location: index.php?success=1");

@@ -1,5 +1,5 @@
 <?php
-include_once('koneksi.php');
+include_once('../koneksi.php'); 
 
 $id = $_GET['id'];
 $query = mysqli_query($koneksi, "SELECT * FROM sewa WHERE id='$id'");
