@@ -21,25 +21,38 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `sewa`
 --
-
 CREATE TABLE `sewa` (
-  `id` int(10) NOT NULL,
-  `judul` varchar(50) NOT NULL,
-  `penyewa` varchar(50) NOT NULL,
-  `tanggal_sewa` date NOT NULL,
-  `tanggal_selesai` date NOT NULL,
-  `durasi` varchar(50) NOT NULL
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `judul` VARCHAR(50) NOT NULL,
+  `penyewa` VARCHAR(50) NOT NULL,
+  `tanggal_sewa` DATE NOT NULL,
+  `tanggal_selesai` DATE NOT NULL,
+  `durasi` INT(10) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sewa`
 --
-
 INSERT INTO `sewa` (`id`, `judul`, `penyewa`, `tanggal_sewa`, `tanggal_selesai`, `durasi`) VALUES
-(1113670, 'Buku 1', 'Johan', '2020-11-23', '2020-11-24', '1 hari'),
-(1113671, 'Buku 2', 'Jokowi', '2020-11-23', '2020-11-24', '1 hari'),
-(1113672, 'Buku 3', 'Margaret', '2020-11-23', '2020-11-24', '1 hari'),
-(1113673, 'Buku 4', 'Nency', '2020-11-23', '2020-11-24', '1 hari');
+(1113670, 'Buku 1', 'Johan', '2020-11-23', '2020-11-24', 1),
+(1113671, 'Buku 2', 'Jokowi', '2020-11-23', '2020-11-24', 1),
+(1113672, 'Buku 3', 'Margaret', '2020-11-23', '2020-11-24', 1),
+(1113673, 'Buku 4', 'Nency', '2020-11-23', '2020-11-24', 1);
+
+--
+-- Mengatur AUTO_INCREMENT agar id berikutnya tidak bentrok dengan data yang ada
+--
+ALTER TABLE `sewa`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `sewa` AUTO_INCREMENT = 1113674;
+
+
+--
+-- Indexes for table `sewa`
+--
+
 
 -- --------------------------------------------------------
 
@@ -99,11 +112,6 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `fullname`, `level`, `gam
 -- Indexes for dumped tables
 --
 
---
--- Indexes for table `sewa`
---
-ALTER TABLE `sewa`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
